@@ -26,5 +26,16 @@ public class JournalEntryController {
         return "Success : Entry created";
     }
 
-  
+    @GetMapping("/{id}")
+    public JournalEntry getEntryById(@PathVariable Long id){
+        return journalEntries.get(id);
+    }
+    @DeleteMapping("/{id}")
+    public JournalEntry deleteEntryById(@PathVariable Long id){
+        return journalEntries.remove(id);
+    }
+    @PatchMapping("/{id}")
+    public JournalEntry updateEntryById(@PathVariable Long id, @RequestBody JournalEntry entry){
+        return journalEntries.put(id,entry);
+    }
 }
